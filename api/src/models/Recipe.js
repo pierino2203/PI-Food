@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
     image:  {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue:  "https://blog.weareangular.com/wp-content/uploads/2021/03/Banner-%E2%80%A2-Errores-al-programar.jpg",
+      defaultValue:  "https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-sin-foto-o-icono-de-imagen-en-blanco-cargando-im%C3%A1genes-o-marca-de-imagen-faltante-imagen-no-disponib.jpg?ver=6",
     },
     summary:  {
       type: DataTypes.STRING,
@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
     },
     steps:  {
-      type: DataTypes.ARRAY(DataTypes.JSON),
+      type: DataTypes.TEXT,
      },
      createInDb:  {
       type: DataTypes.BOOLEAN,

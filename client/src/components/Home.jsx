@@ -61,7 +61,7 @@ export default function Home(){
         <label>Order by Name:</label>
         <select onChange={(e) => handleOrderName(e)}>
           <option value='----'>----</option>
-          <option valule='asc'>ASC ⬆️</option>
+          <option value='asc'>ASC ⬆️</option>
           <option value='desc'>DES ⬇️</option>
         </select>
       </div>
@@ -71,9 +71,8 @@ export default function Home(){
             <div > 
             <NavLink to={`/home/${e.id}`} >
               <div><Card  
-            
-              name={e.name} 
               image={e.image}
+              name={e.name} 
               key={e.id}
               health_score={e.health_score}
               diets= {!e.createInDb ? e.diets.join('   ') : e.Diets.map((d) => d.name + '   ')}

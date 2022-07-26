@@ -1,25 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDiets, orderByHealth } from "../redux/actions";
+import { Link } from "react-router-dom";
+import { getDiets, getRecipeByName, orderByHealth } from "../redux/actions";
 import { filterByDiet } from '../redux/actions'
 
 
 export default function SearchBar(){
   const dispatch=useDispatch();
   const diets = useSelector((state) => state.diets);
+  const [name,setName]=useState('');
   useEffect ( () => {
     dispatch(getDiets())
     
   },[dispatch]);
   function handleFilterDiets(e){
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(filterByDiet(e.target.value))
   }
+ function handleInputName(e){
+  // e.preventDefault();
+  setName(e.target.value);
   
-  return  (
+ } 
+ function handleSubmitName(e){
+  // e.preventDefault();
+  dispatch(getRecipeByName(name))
+ } 
+ return  (
     <div>
-      <input type='text' placeholder="Insert recipe"/>
-      <button type='submit' >Search</button>
+      <input type='text' placeholder="Insert recipe" onChange={(e)=>handleInputName(e)}/>
+      <button type='submit' onClick={(e)=>handleSubmitName(e)}>Search</button>
+      
       <div>
         <label>Diets Types </label>
         <select onChange={(e) => handleFilterDiets(e) }>
@@ -29,6 +40,7 @@ export default function SearchBar(){
           ))}
         </select>
       </div>
+      <Link to='/recipe'><button>Create Recipe</button></Link>
       
     </div>
   )

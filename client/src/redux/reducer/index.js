@@ -33,45 +33,45 @@ export default function rootReducer(state= initialState,action){
         ...state,
         recipes: dietsFilter 
       }
-      case 'ORDER_BY_HEALTH':
-        const orderDiets=action.payload==='UP' ? 
-        state.recipes.sort(function(a,b){
-          if(a.health_score > b.health_score){
-            return 1;
-          }if(b.health_score > a.health_score){
-            return -1;
-          }
-          return 0;
-        })
-        : state.recipes.sort(function(a,b){
-          if(a.health_score > b.health_score){
-            return -1;
-          }if(b.health_score > a.health_score){
-            return 1;
-          }
-          return 0;
-        })
-        return{
-          ...state,
-          recipes: orderDiets
+    case 'ORDER_BY_HEALTH':
+      const orderDiets=action.payload==='UP' ? 
+      state.recipes.sort(function(a,b){
+        if(a.health_score > b.health_score){
+          return 1;
+        }if(b.health_score > a.health_score){
+          return -1;
         }
-        case 'ORDER_BY_NAME':
-          let sortedArr= action.payload==='asc'?
-          state.recipes.sort( function (a,b){
-              if(a.name > b.name){
+          return 0;
+        })
+      : state.recipes.sort(function(a,b){
+        if(a.health_score > b.health_score){
+           return -1;
+        }if(b.health_score > a.health_score){
+           return 1;
+        }
+          return 0;
+      })
+      return{
+        ...state,
+        recipes: orderDiets
+      }
+    case 'ORDER_BY_NAME':
+      let sortedArr= action.payload==='desc'?
+       state.recipes.sort( function (a,b){
+              if(a.name.toLowerCase() > b.name.toLowerCase()){
                 return 1;
               }
-              if(b.name > a.name){
+              if(b.name.toLowerCase() > a.name.toLowerCase()){
                 return -1;
               }
               return 0;  
               
           })  :
           state.recipes.sort(  function(a,b) {
-            if(a.name > b.name) {
+            if(a.name.toLowerCase() > b.name.toLowerCase()) {
               return -1;
             }
-            if(b.name > a.name) {
+            if(b.name.toLowerCase() > a.name.toLowerCase()) {
               return 1;
             }
             return 0;
@@ -79,14 +79,24 @@ export default function rootReducer(state= initialState,action){
           return{
             ...state,
             recipes: sortedArr
-          }
-          case 'GET_RECIPE_ID':
-            return{
-              ...state,
-              detail: action.payload
-            } 
-      default:
-    return state;
+          }    
+    case 'GET_RECIPE_ID':
+      return{
+        ...state,
+        detail: action.payload
+      }
+    case 'GET_RECIPE_NAME':
+      return{
+        ...state,
+        recipes: action.payload
+      }      
+            
+    case 'POST_RECIPE':
+      return{
+        ...state
+      }
+    default:
+      return state;
   }
 }
 

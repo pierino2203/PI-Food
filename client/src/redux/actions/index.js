@@ -51,3 +51,28 @@ export function getRecipeById(id){
     console.log('Error al traer la Recete por id',error)
   }
 }
+
+export function getRecipeByName(name){
+  try {
+    return async function(dispatch){
+      const recipe =await axios.get('http://localhost:3001/recipes?name='+name)
+      return dispatch({
+        type: 'GET_RECIPE_NAME',
+        payload: recipe.data
+      })
+    }
+  } catch (error) {
+    console.log('Error al buscar Receta por Nombre',error)
+  }
+}
+
+export function postRecipe(payload){
+  return async function(dispatch){
+    try {
+      const recipe= await axios.post('http://localhost:3001/recipes',payload);
+      return recipe;
+    } catch (error) {
+      console.log("Error PostRecipe",error)
+    }
+  }
+}
