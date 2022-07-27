@@ -5,6 +5,9 @@ import Card from "./Card";
 import { NavLink } from 'react-router-dom';
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import Style from '../styles/Home.module.css'
+
+
 export default function Home(){
   const dispatch = useDispatch();
   const allRecipes =useSelector((state) =>  state.recipes);
@@ -41,7 +44,6 @@ export default function Home(){
   return  (
     <div>
       <SearchBar/>
-      <h1>Foods-Recipes</h1>
       <button onClick={e => {handleClick(e)}}>Refresh Recipes</button>
       <div>
       <Paginado
@@ -65,25 +67,30 @@ export default function Home(){
           <option value='desc'>DES ⬇️</option>
         </select>
       </div>
-      {
-        currentRecipes?.map((e) =>{
-          return(
-            <div > 
-            <NavLink to={`/home/${e.id}`} >
-              <div><Card  
-              image={e.image}
-              name={e.name} 
-              key={e.id}
-              health_score={e.health_score}
-              diets= {!e.createInDb ? e.diets.join('   ') : e.Diets.map((d) => d.name + '   ')}
-             
-              /></div>
-            </NavLink>
-          </div>
-          )
-        })
+      <div className={Style.recipeCards}>
+        <ul className={Style.recipesGrid}>
+          {
+            currentRecipes?.map((e) =>{
+              return(
+                <div className={Style.margin}> 
+                  <NavLink className={Style.navLink} to={`/home/${e.id}`} >
+                    <div >
+                      <Card  
+                      image={e.image}
+                      name={e.name} 
+                      key={e.id}
+                      health_score={e.health_score}
+                      diets= {!e.createInDb ? e.diets.join('   ') : e.Diets.map((d) => d.name + '   ')}
+                      />
+                    </div>
+                  </NavLink>
+                </div>
+              )
+            })
+          }
+        </ul>
+      </div>
       
-      }
       </div>
       
     </div>

@@ -1,0 +1,99 @@
+.margin{
+    height: 530px;
+    display: block;
+    margin:auto;
+    width: 800px;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 10px #e60073,
+    0 0 10px #e60073, 0 0 10px #e60073, 0 0 10px #e60073;
+   
+}
+.margin:hover {
+    transform: scale(1.02);
+    
+  }
+  .margin::after {content: "";background: rgb(220, 220, 220, 200); opacity: 0.5; top: 0; left: 0; bottom: 0; right: 0; position: absolute; z-index: -1; }
+
+.title{
+    font-style: italic;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 10px #e60073,
+    0 0 10px #e60073, 0 0 10px #e60073, 0 0 10px #e60073;;
+    margin-bottom: 0;
+    padding: 20px;
+}
+.title:hover {
+    transform: scale(1.2);
+    
+}
+    .dogImage{
+    display: block;
+text-align: right;
+    opacity: 100%;
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+  }
+
+  .text{
+    width: 300px;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: oblique;
+    padding: 10px;
+  }
+.contenedor{
+  display: flex;
+    justify-content: center;
+    align-items: center;}
+
+ .tamaño{ 
+     display: flex;
+  flex-flow: row;
+  align-items: center;
+justify-content: center;
+}
+
+.peso{ 
+    display: flex;
+ flex-flow: row;
+ align-items: center;
+justify-content: center;
+}
+
+.vida{ 
+    display: flex;
+ flex-flow: row;
+ align-items: center;
+justify-content: center;
+}
+
+.p{
+margin-block-start: unset;
+margin-block-end: unset;
+}
+
+.col{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+   justify-content: center;
+}
+
+.boton{
+    width: 200px;
+    margin: 20px;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: burlywood;
+    border-radius: 6px;
+    border: 2px solid #8d7248;
+  }
+  
+  
+   

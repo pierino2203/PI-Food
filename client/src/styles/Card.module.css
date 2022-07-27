@@ -1,0 +1,22 @@
+.card{
+    background-color:rgb(188, 190, 104);
+    border-style: solid;
+     border-color: rgb(173, 166, 166) 10px;
+     border-radius: 20px;
+}
+
+.subTitle{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+    margin: 5px
+}
+.diet{
+    word-spacing: 0.25em;
+    text-align: center; 
+    font-size: 0.9rem;
+    margin: 5px
+}
+    
+  

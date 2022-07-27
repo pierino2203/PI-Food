@@ -1,0 +1,114 @@
+.searchBar{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.input {
+    display: inline-flex;
+    font-size: 9px;
+    font-family: 'Verdana', sans-serif;
+    font-weight: bold;
+    color: #444;
+    line-height: 2.3;
+    padding: .4em 1.4em .3em .8em;
+    width: 300px;
+    max-width: 150%; 
+    box-sizing: border-box;
+    margin: -30px;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
+    border-radius: .3em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: rgb(188 190 104);
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+  }
+  .input::-ms-expand {
+    display: none;
+  }
+  .input:hover {
+    border-color: #888;
+    
+  }
+  .input:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px #aa926c;
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222; 
+    outline: none;
+  }
+  .input option {
+    font-weight:normal;
+  }
+
+  @media (max-width: 560px){
+  
+  }
+
+  .boton{
+    width: 133px;
+    text-decoration: unset;
+    padding: 5px;
+    font-weight: 100;
+    font-size: 13px;
+    color: #ffffff;
+    background-color: rgb(188 190 104);
+    border-radius: 7px;
+    border: 2px solid black;
+  }
+  
+  .boton:hover{
+    color: #3c3d15bb;
+    background-color: #f5e2a4;
+    
+    transform: scale(1.1);
+  }
+
+    @media (max-width: 850px) {
+      .searchBar{
+        margin-left: 10px;
+        margin-right: 10px;
+    } 
+    } 
+
+    @media (max-width: 800px) {
+      .searchBar{
+        margin-left: 5px;
+        margin-right: 5px;
+    } 
+    .input {
+      font-size: 9px;
+      width: 130px; 
+      margin: 5px;
+    }
+
+    .boton{
+      width: 130px;
+      font-size: 10px;
+    }
+    } 
+    
+    
+
+   
+    @media (max-width: 600px){
+      .searchBar{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+      
+      .boton{
+        width: 100px;
+        padding: 5px;
+        font-size: 10px;
+      }
+      .input {
+        font-size: 8px;
+        width: 100px; 
+        margin: 5px;
+      }  
+      
+      }

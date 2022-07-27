@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipeById } from "../redux/actions";
 import { Link } from "react-router-dom";
-
+import Style from '../styles/RecipeDetail.module.css'
 export default function RecipeDetail(props){
   const dispatch =useDispatch();
   useEffect(() => {
@@ -10,11 +10,11 @@ export default function RecipeDetail(props){
   },[dispatch]);
   const myRecipe = useSelector((state) =>state.detail);
   return(
-    <div>
+    <div className={Style.margin}>
       {
         myRecipe.length>0 ?
         <div>
-          <h1>{myRecipe[0].name}</h1>
+          <h1 className={Style.title}>{myRecipe[0].name}</h1>
           <img src={myRecipe[0].image} atl='image food' width='200px' height='250px'/>
           {
             !myRecipe[0].createInDb
