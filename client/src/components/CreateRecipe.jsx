@@ -6,7 +6,7 @@ import Style from '../styles/CreateRecipe.module.css'
 function validate(input){
   let error={};
   if(!input.name|| !/^[A-Z]+[A-Za-z\s]+$/g.test(input.name)){
-    error.name="Insert name(required)"
+    error.name="Insert name(required), Start with uppercase,no numbers and simbols"
   }
   if(!input.summary){
     error.summary="Insert recipe summary(required)"
@@ -25,7 +25,7 @@ export default function CreateRecipe(){
   const [error,setError]=useState({});
   const [input,setInput]= useState({
     name: '',
-    image: '', 
+    image: undefined , 
     summary: '',
     health_score: '',
     steps: '',
@@ -54,16 +54,21 @@ export default function CreateRecipe(){
   } 
   function handleSubmit(e){
     e.preventDefault();
-    dispatch(postRecipe(input))
-    alert('Recipe Created')
-    setInput({
+    if(Object.keys(error).length === 0 && input.name!='' && input.summary!='' && input.health_score!=''){
+      dispatch(postRecipe(input))
+      alert('Recipe Created')
+      setInput({
       name: '',
-      image: '', 
+      image: undefined, 
       summary: '',
       health_score: '',
       steps: '',
       diets: []  
     })
+    }else{
+      alert('Complete all inputs require')
+    }
+    
   }
   return(
     <div>

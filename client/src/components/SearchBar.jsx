@@ -32,23 +32,15 @@ export default function SearchBar(){
  return  (
     <div>
       <div className={Style.SearchBar}>
-      <h1 >Foods-Recipes {<img src={cooking}  alt='logo de cocina' width='40px' height='40px'/>}</h1>
-         <input className={Style.input} type='text' placeholder="Insert recipe" onChange={(e)=>handleInputName(e)}
-         ></input>
+        <input 
+          className={Style.input}
+          type='text' 
+          placeholder="Insert recipe" 
+          onChange={(e)=>handleInputName(e)}
+        />
         <button className={Style.boton} type='submit' onClick={(e)=>handleSubmitName(e)}>Search</button>
       </div>
-      <div>
-        <label>Diets Types </label>
-        <select onChange={(e) => handleFilterDiets(e) }>
-          <option value='All'>All</option>
-          {diets && diets.map((d)=>(
-            <option value={d.name} key={d.name}>{d.name}</option>
-          ))}
-        </select>
-      </div>
-      <Link to='/recipe'><button>Create Recipe</button></Link>
-      
     </div>
-  )
+ )
 
 }

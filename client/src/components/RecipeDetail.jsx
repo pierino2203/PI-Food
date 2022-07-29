@@ -10,28 +10,52 @@ export default function RecipeDetail(props){
   },[dispatch]);
   const myRecipe = useSelector((state) =>state.detail);
   return(
-    <div className={Style.margin}>
-      {
-        myRecipe.length>0 ?
-        <div>
-          <h1 className={Style.title}>{myRecipe[0].name}</h1>
-          <img src={myRecipe[0].image} atl='image food' width='200px' height='250px'/>
-          {
-            !myRecipe[0].createInDb
-            ? <h3>Diets types: {myRecipe[0].diets.join('   ')}</h3>
-            :<h3>Diets types: {myRecipe[0].Diets.map((d)=> {return (<h3>{d.name+'    '}</h3>)})}</h3>
-          }
-          <h3>Health Score: {myRecipe[0].health_score}</h3>
-          <h3>Summary: {myRecipe[0].summary.replace(/<[^>]+>/g,"")}</h3>
-          <h3>Steps:
-            {myRecipe[0].steps}
-          </h3>
+    <div >
+      <Link to='/home'>
+        <button className={Style.boton}>Back</button>
+      </Link>  
+      {myRecipe.length>0 ?
+        <div className={Style.margin}>
+          <div className={Style.contenedor}>
+            <div className={Style.text}>
+              <h1 className={Style.title}>{myRecipe[0].name}</h1>
+              <img className={Style.recipeImage} src={myRecipe[0].image} atl='image food' />
+            <div >
+              {
+                !myRecipe[0].createInDb
+                ? <h3><u>Diets type</u>: {myRecipe[0].diets.join(' - ')}</h3>
+                :<h3><u>Diets types</u>: {myRecipe[0].Diets.map((d) => d.name + ' - ')}</h3>
+              }
+            </div>
+            <div>
+                <h3><u>Health Score</u>: {myRecipe[0].health_score}</h3>
+            </div>
+            <div className={Style.text}>
+              <h3><u>Summary</u>: </h3>
+              <h4>{myRecipe[0].summary.replace(/<[^>]+>/g,"")}</h4>
+            </div>
+            <div className={Style.text}>
+              {
+                myRecipe[0].steps.length>0?
+                  <h3><u>Steps</u>:
+                    <h4>
+                      {
+                        myRecipe[0].steps
+                      }
+                    </h4>
+                  </h3>
+              :
+              <h3><u>Steps</u>: None</h3>
+              }
+
+            </div>
+            </div>
+          </div>  
         </div>
         :<p>Loading...</p>
       }
-      <Link to='/home'>
-        <button>Back</button>
-      </Link>
+      
+      
     </div>
   )
 }

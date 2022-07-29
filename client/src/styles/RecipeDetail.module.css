@@ -1,52 +1,50 @@
 .margin{
-    height: 530px;
-    display: block;
-    margin:auto;
-    width: 800px;
-    margin-top: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 10px #e60073,
-    0 0 10px #e60073, 0 0 10px #e60073, 0 0 10px #e60073;
+  height: 888px;
+  display: block;
+  margin: auto;
+  width: 800px;
+  margin-top: -36px;
+  border-radius: 15px;
+  
+    
    
 }
-.margin:hover {
-    transform: scale(1.02);
-    
-  }
-  .margin::after {content: "";background: rgb(220, 220, 220, 200); opacity: 0.5; top: 0; left: 0; bottom: 0; right: 0; position: absolute; z-index: -1; }
 
 .title{
     font-style: italic;
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 10px #e60073,
-    0 0 10px #e60073, 0 0 10px #e60073, 0 0 10px #e60073;;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px rgb(188 190 104), 0 0 10px rgb(188 190 104),
+    0 0 10px rgb(188 190 104), 0 0 10px rgb(188 190 104), 0 0 10px rgb(188 190 104);
     margin-bottom: 0;
     padding: 20px;
 }
-.title:hover {
-    transform: scale(1.2);
-    
-}
-    .dogImage{
-    display: block;
-text-align: right;
-    opacity: 100%;
-    border-radius: 20px;
-    width: 400px;
-    height: 400px;
-    margin: 20px;
+
+    .recipeImage{
+        display: block;
+        text-align: initial;
+        opacity: 100%;
+        border-radius: 20px;
+        width: 433px;
+        height: 400px;
+        margin-inline: auto;
   }
 
   .text{
-    width: 300px;
+    width: 795px;
     font-size: 16px;
     font-weight: bold;
-    font-style: oblique;
-    padding: 10px;
+    font-style: inherit;
+    padding: -31px;
   }
 .contenedor{
   display: flex;
     justify-content: center;
-    align-items: center;}
+    align-items: center;
+    background: rgb(188, 190, 104);
+    border-radius: 20px;
+    box-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 10px rgb(188 190 104), 0 0 5px rgb(188 190 104),
+  0 0 5px rgb(188 190 104), 0 0 5px rgb(188 190 104), 0 0 5px rgb(188 190 104);
+  }
+    
 
  .tamaño{ 
      display: flex;
@@ -89,10 +87,16 @@ margin-block-end: unset;
     padding: 10px;
     font-weight: 800;
     font-size: 20px;
-    color: #ffffff;
-    background-color: burlywood;
+    color: black;
+    background-color: rgb(188 190 104);
     border-radius: 6px;
     border: 2px solid #8d7248;
+  }
+  .boton:hover{
+    color: #3c3d15bb;
+    background-color: #f5e2a4;
+    
+    transform: scale(1.1);
   }
   
   

@@ -39,7 +39,7 @@ recipeRouter.post('/recipes',async (req,res)  =>  {
     const recipe={
       id,
       name,
-      image,
+      image ,
       summary,
       health_score,
       steps,
