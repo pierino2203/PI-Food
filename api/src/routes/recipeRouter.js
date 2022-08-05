@@ -11,9 +11,9 @@ recipeRouter.get('/recipes',async (req,res)  =>  {
       if(name)  {
         const recipeFind= await getRecipeByName(name);
         // console.log('Aqui esta la receta',recipeFind);
-        !recipeFind
-        ? res.status(404).send('No se encontro la receta')
-        : res.status(200).send(recipeFind);
+        recipeFind.length
+        ? res.status(200).send(recipeFind)
+        : res.status(404).send('Recipe not found')
       }else{
         const allRecipe= await getAllRecipe();
         res.status(200).send(allRecipe);
@@ -48,23 +48,37 @@ recipeRouter.post('/recipes',async (req,res)  =>  {
 
     } = req.body;
     // console.log(recipe)
-    const recCreated=await Recipe.create({
-      id,
-      name,
-      image,
-      summary,
-      health_score,
-      steps,
-      createInDb
+    const find = await Recipe.findAll({
+      where:{name : name}
     })
-    let dietDb= await Diet.findAll({
-      where:  {name:  diets}
-    })
-    recCreated.addDiet(dietDb);
-    console.log(recCreated);
-    res.send('Se creo la Receta correctamente :)')
+    if(find.length>0){
+      res.send('Ya hay una receta con ese nombre')
+    }else{
+      const recCreated=await Recipe.create({
+        id,
+        name,
+        image,
+        summary,
+        health_score,
+        steps,
+        createInDb
+      })
+      let dietDb= await Diet.findAll({
+        where:  {name:  diets}
+      })
+      recCreated.addDiet(dietDb);
+      console.log(recCreated);
+      res.send('Se creo la Receta correctamente :)')
+    }
+    
+
+    
   } catch (error) {
     console.log('Error al crear la receta',error)
   }
 })
+
+
+ 
+
 module.exports=recipeRouter;

@@ -1,24 +1,34 @@
 const axios =require('axios');
 
 export function getRecipes(){
-  return async function(dispatch){
-    const recipes = await axios.get('http://localhost:3001/recipes');
-    return dispatch({
-      type: 'GET_RECIPES',
-      payload: recipes.data
-    })
+  try {
+    return async function(dispatch){
+      const recipes = await axios.get('http://localhost:3001/recipes');
+      return dispatch({
+        type: 'GET_RECIPES',
+        payload: recipes.data
+      })
+    }
+  } catch (error) {
+    console.log('Error en getRecipe',error)
   }
 }
 
 export function getDiets(){
-  return async function(dispatch){
-    const diets = await axios.get('http://localhost:3001/diets')
-    return dispatch({
-      type: 'GET_DIETS',
-      payload: diets.data
-    })
-  }
+  
+    return async function(dispatch){
+      try {
+        const diets = await axios.get('http://localhost:3001/diets')
+        return dispatch({
+        type: 'GET_DIETS',
+        payload: diets.data
+      })
+      } catch (error) {
+        console.log('Error en Get',error)
+      }
+    }
 }
+
 
 export function filterByDiet(payload){
   return {
@@ -38,32 +48,47 @@ export function orderByName(payload){
     payload
   }
 }
+
+
 export function getRecipeById(id){
-  try {
-    return async function(dispatch){
+  return async function(dispatch){
+    try{
       const recipe = await axios.get('http://localhost:3001/recipes/'+id)
-      return dispatch({
+       return dispatch({
         type: 'GET_RECIPE_ID',
         payload: recipe.data
-      })
-    }
-  } catch (error) {
-    console.log('Error al traer la Recete por id',error)
+        })
+      }
+     catch (error) {
+      console.log('Error al traer la Recete por id',error)
+    
+  }
+}
+}
+
+export function cleanDetail(){
+  return {
+    type: 'CLEAN_DETAIL',
+    payload: []
   }
 }
 
 export function getRecipeByName(name){
-  try {
+  
     return async function(dispatch){
-      const recipe =await axios.get('http://localhost:3001/recipes?name='+name)
+     try{
+      const recipe =await axios.get('http://localhost:3001/recipes?name='+ name)
       return dispatch({
         type: 'GET_RECIPE_NAME',
         payload: recipe.data
       })
+     }
+     catch (e) {
+      console.log(e)
+      alert("Recipe not found")
     }
-  } catch (error) {
-    console.log('Error al buscar Receta por Nombre',error)
-  }
+    }
+   
 }
 
 export function postRecipe(payload){

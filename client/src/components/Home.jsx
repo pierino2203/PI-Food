@@ -6,8 +6,6 @@ import { NavLink } from 'react-router-dom';
 import Paginado from "./Paginado";
 import NavBar from "./Navbar";
 import Style from '../styles/Home.module.css'
-import { Link } from "react-router-dom";
-
 
 export default function Home(){
   const dispatch = useDispatch();
@@ -48,6 +46,7 @@ export default function Home(){
     setOrden(`Ordenado ${e.target.value}`);
     
   }
+    
   return  (
     <div>
       <NavBar/>
@@ -83,6 +82,7 @@ export default function Home(){
           <option value='asc'>ASC ⬆️</option>
           <option value='desc'>DES ⬇️</option>
         </select>
+              
       </div>
       <div className={Style.recipeCards}>
         <ul className={Style.recipesGrid}>
@@ -97,7 +97,7 @@ export default function Home(){
                       name={e.name} 
                       key={e.id}
                       health_score={e.health_score}
-                      diets= {!e.createInDb ? e.diets.join(' - ') : e.Diets.map((d) => d.name + ' - ')}
+                      diets= {!e.createInDb ? e.diets.join(' / ') : e.Diets.map((d) => d.name + ' / ')}
                       />
                     </div>
                   </NavLink>

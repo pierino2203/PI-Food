@@ -4,7 +4,7 @@ const getAllRecipe = require('./getAllRecipe');
 const getRecipeByName= async (name)  =>{
  try {
   const allRecipe= await getAllRecipe();
-  const recipeFind= allRecipe.filter((e) => e.name.toLowerCase()===(name.toLowerCase()))
+  const recipeFind= allRecipe.filter((e) => e.name.toLowerCase().includes(name.toLowerCase()))
 //   console.log(name);
 //   console.log(recipeFind);
   return recipeFind;

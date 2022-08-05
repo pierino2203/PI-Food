@@ -13,7 +13,7 @@ export default function LandingPage(){
         </div>
         
         
-        <img className={Style.img} src={cooking} alt='Image cook'/>
+        <img className={Style.img} src={cooking} alt='cook'/>
         
       </div>
     )

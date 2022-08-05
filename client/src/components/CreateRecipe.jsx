@@ -34,7 +34,7 @@ export default function CreateRecipe(){
   
   useEffect(()=>  {
     dispatch(getDiets());
-  },[]);
+  },[dispatch]);
   
   function handleChange(e){
     setInput({
@@ -47,6 +47,7 @@ export default function CreateRecipe(){
     }))
   }
   function handleSelect(e){
+    if(!input.diets.includes(e.target.value))
     setInput({
       ...input,
       diets: [...input.diets,e.target.value]
@@ -54,7 +55,7 @@ export default function CreateRecipe(){
   } 
   function handleSubmit(e){
     e.preventDefault();
-    if(Object.keys(error).length === 0 && input.name!='' && input.summary!='' && input.health_score!=''){
+    if(Object.keys(error).length === 0 && input.name!=='' && input.summary!=='' && input.health_score!==''){
       dispatch(postRecipe(input))
       alert('Recipe Created')
       setInput({
@@ -68,8 +69,15 @@ export default function CreateRecipe(){
     }else{
       alert('Complete all inputs require')
     }
-    
+ 
   }
+  function handleClear(e) {
+    e.preventDefault();
+    setInput({
+      ...input,
+      diets: input.diets.filter((el) => el !== e.target.value)
+    })
+  }  
   return(
     <div>
       <NavLink className={Style.navLink} to='/home'><button className={Style.boton}>Back</button></NavLink>
@@ -138,7 +146,7 @@ export default function CreateRecipe(){
               ))
             }
           </select>
-          <ul className={Style.ul}><li className={Style.lista}>{input.diets.map(el=> el + ' ,')}</li></ul>
+          <ul className={Style.ul} ><li className={Style.lista} onClick={(e)=>handleClear(e)}>{input.diets.map(el=> <button value={el} onClick={(e)=>handleClear(e)}> {el + ' '} X</button>)}</li></ul>
         </div>
         <button className={Style.boton} type='submit'>Create Recipe</button>
       </form>

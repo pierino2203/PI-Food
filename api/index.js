@@ -19,11 +19,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const getRecipes =require('./src/utils/getRecipes')
+const getDiets =require('./src/utils/getDiets')
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   // getRecipes(); 
-  // getDiets();
+  //  getDiets();
   // getRecipeByName("Grilled Zucchini with Goat Cheese and Balsamic-Honey Syrup"); 
   // getAllRecipe();
   // getRecipeById(664090);

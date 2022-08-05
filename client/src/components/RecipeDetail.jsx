@@ -1,25 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipeById } from "../redux/actions";
+import { cleanDetail, getRecipeById } from "../redux/actions";
 import { Link } from "react-router-dom";
 import Style from '../styles/RecipeDetail.module.css'
 export default function RecipeDetail(props){
   const dispatch =useDispatch();
-  useEffect(() => {
-    dispatch(getRecipeById(props.match.params.id))
-  },[dispatch]);
   const myRecipe = useSelector((state) =>state.detail);
+  useEffect(() => {
+    dispatch(getRecipeById(props.match.params.id));
+    return ()=> dispatch(cleanDetail());
+  },[props.match.params.id]);
+  function handleChange(e){
+
+  }
   return(
     <div >
       <Link to='/home'>
-        <button className={Style.boton}>Back</button>
+        <button className={Style.boton} onChange={(e)=>handleChange(e)}>Back</button>
       </Link>  
       {myRecipe.length>0 ?
         <div className={Style.margin}>
           <div className={Style.contenedor}>
             <div className={Style.text}>
               <h1 className={Style.title}>{myRecipe[0].name}</h1>
-              <img className={Style.recipeImage} src={myRecipe[0].image} atl='image food' />
+              <img className={Style.recipeImage} src={myRecipe[0].image} alt='Food-image' />
             <div >
               {
                 !myRecipe[0].createInDb
